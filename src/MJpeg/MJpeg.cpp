@@ -168,7 +168,7 @@ namespace ImageLite
                     else
                     {
                         m_bimg.reserve(m_bimg.size() + sz);
-                        m_bimg.insert(m_bimg.end(), b, b + sz);
+                        m_bimg.insert(m_bimg.end(), &b[0], b + sz);
                     }
                     break;
                 }
@@ -199,7 +199,6 @@ namespace ImageLite
                         m_dec.error.clear();
                         throw std::system_error(error);
                     }
-
                     return x;
                 }
             default:

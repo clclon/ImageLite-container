@@ -1,7 +1,7 @@
 
 #include <string>
 #include <system_error>
-#include "ImageLite.Error.h"
+#include "ImageLite.h"
 
 namespace ImageLite
 {

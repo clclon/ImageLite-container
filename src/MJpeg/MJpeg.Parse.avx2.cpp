@@ -1,6 +1,7 @@
 
 #include "../ImageLite.h"
 #include "NVJpegDecoder.Error.h"
+#include <HelperIntrin.h>
 
 enum maskid
 {
@@ -135,15 +136,9 @@ namespace ImageLite
         }
 
 #   elif !defined(__ANDROID__)
-        void __attribute__((noinline)) initavx2_internal() { throw std::runtime_error(_AVX2_NOT_SUPPORT_MSG); }
-        int32_t __attribute__((noinline)) foreach_avx2(
-                const char*,
-                int32_t,
-                int32_t,
-                int32_t &,
-                int32_t &,
-                ImageLite::MJpeg::StageType &
-            ) { throw std::runtime_error(_AVX2_NOT_SUPPORT_MSG); }
+#     if defined(_BUILD_AVX2)
+#       error "broken assembly, support for AVX2 was not included at compile time, remove flag '_BUILD_AVX2'"
+#     endif
 #   endif
     }
 }

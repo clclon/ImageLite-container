@@ -44,9 +44,23 @@
 #include <thread>
 #include <cassert>
 
+#if (defined(__ANDROID__) && defined(_BUILD_DLL))
+#  error "with Android assembly, the '_BUILD_DLL' flag cannot be defined!"
+#endif
+
+#if defined(_BUILD_DLL)
+#  define DLL_EXPORT __declspec(dllexport)
+#  define DLL_CDECL
+#elif defined(_BUILD_IMPORT_DLL)
+#  define DLL_EXPORT __declspec(dllimport)
+#  define DLL_CDECL __cdecl
+#else
+#  define DLL_EXPORT
+#  define DLL_CDECL
+#endif
+
 #define _PIXNUM 3
 #define _PIXSTRUCT ImageLite::IPIX3
-#define _AVX2_NOT_SUPPORT_MSG "broken assembly, support for AVX2 was not included at compile time"
 
 #include "ImageLite.Error.h"
 #include "ImageLite.Geometry.h"
@@ -61,4 +75,3 @@
 #  include "MJpeg/NVJpegDecoder.h"
 #  include "MJpeg.h"
 #endif
-

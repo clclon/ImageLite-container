@@ -211,11 +211,9 @@ namespace ImageLite
 
 			try
 			{
-			    if (!isinitstream)
-                {
+			    if (imgparam.empty())
                     imginfo(idata);
-                    isinitstream = true;
-                }
+
 				odata.resize(imgparam.size());
 				imgdecompress(idata, odata);
 			}

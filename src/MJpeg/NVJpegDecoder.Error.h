@@ -24,7 +24,7 @@ namespace ImageLite
             error_unknown,
             error_end
         };
-        class ErrorCat : public std::error_category
+        class DLL_EXPORT ErrorCat : public std::error_category
         {
         public:
             //

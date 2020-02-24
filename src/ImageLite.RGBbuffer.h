@@ -7,7 +7,7 @@ namespace ImageLite
     /// ImageLite  = format buffer RGB + padding (BI_RGB)
     /// ImageLite = format buffer RGB, no padding (Android)
     /// all error convert to exception
-    class ImageRGBbuffer
+    class DLL_EXPORT ImageRGBbuffer
     {
         public:
             //

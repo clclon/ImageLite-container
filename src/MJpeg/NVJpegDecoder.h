@@ -7,7 +7,7 @@ namespace ImageLite
 	{
 		struct gpuparams_t;
 		//
-		class NVJpegDecoder
+		class DLL_EXPORT NVJpegDecoder
 		{
 		public:
 			//
@@ -17,6 +17,14 @@ namespace ImageLite
 				int32_t size() noexcept
 				{
 					return ((pitch + pad) * height);
+				}
+				bool empty() noexcept
+				{
+					return (!height || !width || !channel || !pitch);
+				}
+				void clear() noexcept
+				{
+					height = width = channel = pitch = pad = 0;
 				}
 				void info(std::ostream& os) const
 				{
@@ -36,7 +44,6 @@ namespace ImageLite
 			//
 			std::unique_ptr<gpuparams_t> nvparam;
 			bool                         nvisenable = false;
-			bool                         isinitstream = false;
 			//
 			void init() noexcept;
 			void clean();

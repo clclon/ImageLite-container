@@ -107,16 +107,9 @@ namespace ImageLite
             }
         }
 #   elif !defined(__ANDROID__)
-        void __attribute__((noinline)) initavx2_internal() { throw std::runtime_error(_AVX2_NOT_SUPPORT_MSG); }
-        void __attribute__((noinline)) tobuffer_avx2(
-                ImageLite::ImgBuffer const&,
-                ImageLite::ImgBuffer const&,
-                ImageLite::ImgBuffer const&,
-                int32_t sz, ImageLite::JpegGpu::NVJpegDecoder::gpuimage_t&,
-                ImageLite::ImgBuffer&,
-                std::error_code&
-            ) { throw std::runtime_error(_AVX2_NOT_SUPPORT_MSG); }
-
+#     if defined(_BUILD_AVX2)
+#       error "broken assembly, support for AVX2 was not included at compile time, remove flag '_BUILD_AVX2'"
+#     endif
 #   endif
     }
 }

@@ -3,7 +3,7 @@
 
 namespace ImageLite
 {
-    class Formater
+    class DLL_EXPORT Formater
     {
         public:
             //

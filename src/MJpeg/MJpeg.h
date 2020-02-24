@@ -3,7 +3,7 @@
 
 namespace ImageLite
 {
-	class MJpeg
+	class DLL_EXPORT MJpeg
 	{
 		public:
 			//

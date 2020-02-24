@@ -164,11 +164,9 @@ namespace ImageLite
         return cmp;
     }
 #   elif !defined(__ANDROID__)
-    uint32_t __attribute__((noinline)) ICOMPARE_avx2(
-            ImgBuffer const &,
-            ImgBuffer const &,
-            uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint8_t
-        ) { throw std::runtime_error(_AVX2_NOT_SUPPORT_MSG); }
+#     if defined(_BUILD_AVX2)
+#       error "broken assembly, support for AVX2 was not included at compile time, remove flag '_BUILD_AVX2'"
+#     endif
 #   endif
 }
 
