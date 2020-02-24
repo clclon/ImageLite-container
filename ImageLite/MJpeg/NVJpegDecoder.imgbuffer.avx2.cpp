@@ -52,6 +52,7 @@ namespace ImageLite
             //
         }
 
+        INTRIN_TARGET("avx2")
         void __attribute__((noinline)) tobuffer_avx2(
                 ImageLite::ImgBuffer const& Rc,
                 ImageLite::ImgBuffer const& Gc,

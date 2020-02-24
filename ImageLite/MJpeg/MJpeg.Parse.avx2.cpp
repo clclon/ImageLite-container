@@ -81,6 +81,7 @@ namespace ImageLite
             return ImageLite::MJpeg::StageType::MST_UNKNOWN;
         }
 
+        INTRIN_TARGET("avx2")
         int32_t __attribute__((noinline)) foreach_avx2(
                 const char *b,
                 int32_t sz,
