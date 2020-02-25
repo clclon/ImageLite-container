@@ -11,6 +11,9 @@
 				<Option object_output="lib/obj/Test" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<ExtraCommands>
+					<Add before="cmd.exe /C del test\save-mjpeg-rgb-*.raw" />
+				</ExtraCommands>
 			</Target>
 			<Target title="ContainerTest">
 				<Option output="lib/bin/Test/ImageLite_ContainerTest" prefix_auto="1" extension_auto="1" />
@@ -51,9 +54,6 @@
 		</Unit>
 		<Unit filename="test/ImageLiteTest.h" />
 		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
 			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>

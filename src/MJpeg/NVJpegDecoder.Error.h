@@ -8,6 +8,15 @@ namespace ImageLite
         enum ErrorId
         {
             error_begin = 0,
+            error_nvjpeg_not_initialized,
+            error_nvjpeg_invalid_parameter,
+            error_nvjpeg_bad_jpeg,
+            error_nvjpeg_jpeg_not_supported,
+            error_nvjpeg_allocator_failure,
+            error_nvjpeg_execution_failed,
+            error_nvjpeg_arch_mismatch,
+            error_nvjpeg_internal_error,
+            error_nvjpeg_implementation_not_supported,
             error_bad_device_number,
             error_bad_device_mode,
             error_device_not_support,

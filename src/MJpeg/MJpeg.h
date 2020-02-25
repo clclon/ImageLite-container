@@ -1,3 +1,6 @@
+#ifndef HEADER_BE850F592D131FB9
+#define HEADER_BE850F592D131FB9
+
 
 #pragma once
 
@@ -25,10 +28,13 @@ namespace ImageLite
 
 		public:
 			//
-			using mjpeg_cb = std::function<bool(ImageLite::ImgBuffer const&)>;
+			using mjpeg_cb = std::function<bool(ImageLite::ImgBuffer const&,int32_t const, int32_t const)>;
 			std::error_code error;
 			//
 			MJpeg();
 			void stream(const char*, uint32_t, mjpeg_cb);
+			void clear();
 	};
 }
+#endif // header guard
+

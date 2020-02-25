@@ -1,0 +1,102 @@
+﻿
+#include "SDLMJpegPlayer_internal.h"
+
+LANGUAGE 0x19, 0x01
+ID_ICONDEFAULT ICON   ".\\resource\\SDLMJpegPlayer.ico"
+
+// SDL Surface
+// ID_BMPLOAD48   BITMAP ".\\resource\\image\\load48x48.png"
+// ID_BMPPLAY48   BITMAP ".\\resource\\image\\play48x48.png"
+// ID_BMPSTOP48   BITMAP ".\\resource\\image\\stop48x48.png"
+// ID_BMPPAUSE48  BITMAP ".\\resource\\image\\pause48x48.png"
+
+ID_BMPCONN16   BITMAP ".\\resource\\connect16x16.bmp"
+ID_BMPLOAD16   BITMAP ".\\resource\\load16x16.bmp"
+ID_BMPPLAY16   BITMAP ".\\resource\\play16x16.bmp"
+ID_BMPSTOP16   BITMAP ".\\resource\\stop16x16.bmp"
+ID_BMPPAUSE16  BITMAP ".\\resource\\pause16x16.bmp"
+
+LANGUAGE 0x19, 0x01
+1 RT_MANIFEST "MJPEGPlayer.exe.manifest"
+
+ID_CONTEXT_MENU MENU
+BEGIN
+    POPUP "Contextmenu"
+    BEGIN
+       POPUP "&Aremote server"
+       BEGIN
+          MENUITEM "&Connect Aremote server", IDM_VIDEO_AREMOTE
+          POPUP "&Ratio"
+          BEGIN
+             MENUITEM "1:1", IDM_AREMOTE_RATIO11
+             MENUITEM "1:2", IDM_AREMOTE_RATIO12
+             MENUITEM "1:3", IDM_AREMOTE_RATIO13
+          END
+          POPUP "Ro&tate"
+          BEGIN
+             MENUITEM "0",   IDM_AREMOTE_ROTATE0
+             MENUITEM "90",  IDM_AREMOTE_ROTATE90
+             MENUITEM "180", IDM_AREMOTE_ROTATE180
+             MENUITEM "270", IDM_AREMOTE_ROTATE270
+             MENUITEM "360", IDM_AREMOTE_ROTATE360
+          END
+       END
+       MENUITEM "&Open URL (CTRL-O)", IDM_VIDEO_OPEN
+       MENUITEM "&Play (CTRL-P)",     IDM_VIDEO_PLAY
+       MENUITEM "&Stop (CTRL-S)",     IDM_VIDEO_STOP
+       MENUITEM "Pa&use (CTRL-U)",    IDM_VIDEO_PAUSE
+       MENUITEM SEPARATOR
+       MENUITEM "Enable status bar",  IDM_APP_STATUSBAR
+       MENUITEM "Enable fast decode", IDM_APP_FASTDECODE
+       MENUITEM SEPARATOR
+       MENUITEM "&Exit (CTRL-Q)",     IDM_APP_EXIT
+    END
+END
+
+IDD_DIALOG_OURL DIALOG 0, 0, 186, 40
+STYLE DS_3DLOOK | DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_TOPMOST
+CAPTION ".."
+FONT 8, "Segoe UI Light"
+{
+    CONTROL         "", IDC_EDIT1, WC_EDIT, WS_BORDER | WS_TABSTOP | ES_AUTOHSCROLL | ES_WANTRETURN, 6, 7, 174, 14, WS_EX_LEFT
+    CONTROL         "Cancel", IDCANCEL, WC_BUTTON, WS_TABSTOP | BS_PUSHBUTTON, 129, 24, 50, 14, WS_EX_LEFT
+    CONTROL         "OK", IDOK, WC_BUTTON, WS_TABSTOP | BS_DEFPUSHBUTTON, 77, 24, 50, 14, WS_EX_LEFT
+}
+
+LANGUAGE 0x19, 0x01
+1 VERSIONINFO
+    FILEVERSION     MJPEG_RC_FILEVERSION
+    PRODUCTVERSION  MJPEG_RC_FILEVERSION
+    FILEOS          0x4
+    FILETYPE        0x2
+    FILESUBTYPE     0x0
+    FILEFLAGSMASK   0x2
+    FILEFLAGS       0x2
+{
+BLOCK "StringFileInfo"
+{
+	BLOCK "040904b0"
+	{
+		VALUE "CompanyName", "PS https://github.com/ClClon/ImageLite-container"
+		VALUE "FileDescription", "MJPEG Player, minimum response delay. NVIDIA hardware required"
+		VALUE "FileVersion", MJPEG_FULLVERSION_STRING
+		VALUE "InternalName", "MJPEGPlayer"
+		VALUE "LegalCopyright", "Copyright PS 2016-2020. This is free-ware."
+		VALUE "ProductName", "MJPEG Player ("  __TOSTR(MJPEG_REVISION) ") [" __TOSTR(MJPEG_BUILDS_COUNT) "][" __TOSTR(MJPEG_BUILD_HISTORY) "]"
+		VALUE "OriginalFilename", "MJPEGPlayer.exe"
+		VALUE "ProductVersion", MJPEG_FULLVERSION_STRING
+		VALUE "CompanyShortName", "PS"
+		VALUE "ProductShortName", "MJPEGPlayer"
+		VALUE "LastChange", MJPEG_YEAR " " MJPEG_MONTH " " MJPEG_DATE
+		VALUE "Official Build", "0"
+	}
+}
+
+BLOCK "VarFileInfo"
+{
+	VALUE "Translation", 0x0419, 1251
+}
+
+}
+

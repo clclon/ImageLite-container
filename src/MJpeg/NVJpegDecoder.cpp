@@ -1,5 +1,38 @@
+/*
+    MIT License
+
+    Android Aremote Viewer, GUI ADB tools
+
+    Android Viewer developed to view and control your android device from a PC.
+    ADB exchange Android Viewer, support scale view, input tap from mouse,
+    input swipe from keyboard, save/copy screenshot, etc..
+
+    Copyright (c) 2016-2020 PS
+    GitHub: https://github.com/ClClon/ImageLite-container
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sub license, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+ */
 
 #include "NVJpegDecoder.Internal.h"
+#if defined(_DEBUG)
+#  include <ctime>
+#endif
 
 #if (defined(_BUILD_AVX2) || defined(__AVX2__))
 namespace ImageLite
@@ -58,6 +91,18 @@ namespace ImageLite
 		NVJpegDecoder::~NVJpegDecoder()
 		{
 			clean();
+		}
+
+		void NVJpegDecoder::clear()
+		{
+		    clean();
+            for (int32_t i = 0; i < NVJPEG_MAX_COMPONENT; i++)
+            {
+                nvparam->imgout.channel[i] = nullptr;
+                nvparam->imgout.pitch[i] = 0;
+                nvparam->imgsz.pitch[i] = 0;
+            }
+            imgparam = {};
 		}
 
 		void NVJpegDecoder::clean()
@@ -214,13 +259,13 @@ namespace ImageLite
 			    if (imgparam.empty())
                     imginfo(idata);
 
-				odata.resize(imgparam.size());
+				odata.clear();
 				imgdecompress(idata, odata);
 			}
 			catch (...)
 			{
-				error = JpegGpu::make_error_code(JpegGpu::ErrorId::error_bad_channel);
-				return false;
+				error = JpegGpu::make_error_code(JpegGpu::ErrorId::error_decompress);
+				throw;
 			}
 			return true;
 		}
@@ -246,14 +291,14 @@ namespace ImageLite
 				f.read(reinterpret_cast<char*>(&idata[0]), sz);
 				f.close();
 
+				odata.clear();
 				imginfo(idata);
-				odata.resize(imgparam.size());
 				imgdecompress(idata, odata);
 			}
 			catch (...)
 			{
 				error = JpegGpu::make_error_code(JpegGpu::ErrorId::error_cuda_api);
-				return false;
+				throw;
 			}
 			return true;
 		}
@@ -269,10 +314,37 @@ namespace ImageLite
 				CudaIsErrorsEc(cudaStreamSynchronize(nvparam->stream));
 				imgbuffer(odata);
 			}
-			catch (std::system_error const&)
+			catch (...)
 			{
-				clean();
-				imgparam = {};
+#			        if defined(_DEBUG)
+			        do
+                {
+                    uint32_t t = static_cast<uint32_t>(std::time(nullptr));
+                    std::string s = "save-bad-jpg-source-";
+                    s += std::to_string(t).c_str();
+                    s += ".jpg";
+                    std::ofstream f1(s, std::ios::binary | std::ios::ate);
+                    if (!f1.is_open())
+                        break;
+
+                    f1.write(reinterpret_cast<char*>(const_cast<uint8_t*>(&idata[0])), idata.size());
+                    f1.close();
+
+                    if (!odata.size())
+                        break;
+
+                    s += ".raw";
+                    std::ofstream f2(s, std::ios::binary | std::ios::ate);
+                    if (!f2.is_open())
+                        break;
+
+                    f2.write(reinterpret_cast<char*>(const_cast<uint8_t*>(&odata[0])), odata.size());
+                    f2.close();
+
+                }
+                while (0);
+#			        endif
+				clear();
 				throw;
 			}
 		}
@@ -288,6 +360,7 @@ namespace ImageLite
 			CudaIsErrors(cudaMemcpy2D(&Gc[0], static_cast<size_t>(imgparam.width), nvparam->imgout.channel[1], static_cast<size_t>(nvparam->imgout.pitch[1]), imgparam.width, imgparam.height, cudaMemcpyDeviceToHost));
 			CudaIsErrors(cudaMemcpy2D(&Bc[0], static_cast<size_t>(imgparam.width), nvparam->imgout.channel[2], static_cast<size_t>(nvparam->imgout.pitch[2]), imgparam.width, imgparam.height, cudaMemcpyDeviceToHost));
 
+			odata.resize(imgparam.size());
 #			if (defined(_BUILD_AVX2) || defined(__AVX2__))
 			if (Helper::intrin.getcpuid() == Helper::Intrin::CpuId::CPU_AVX2)
 				ImageLite::JpegGpuAVX2::tobuffer_avx2(Rc, Gc, Bc, sz, imgparam, odata, error);

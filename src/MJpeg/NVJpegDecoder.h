@@ -1,3 +1,6 @@
+#ifndef HEADER_56CE205B424D49E9
+#define HEADER_56CE205B424D49E9
+
 
 #pragma once
 
@@ -64,8 +67,11 @@ namespace ImageLite
 			bool isenable();
 			bool imgread(std::string const&, ImageLite::ImgBuffer&);
 			bool imgstream(ImageLite::ImgBuffer const&, ImageLite::ImgBuffer&);
+			void clear();
 			//
 			static const char* cudaGetError(uint32_t);
 		};
 	}
 }
+#endif // header guard
+

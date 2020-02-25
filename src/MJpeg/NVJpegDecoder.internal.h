@@ -1,3 +1,6 @@
+#ifndef HEADER_38D00353AD0DEE2
+#define HEADER_38D00353AD0DEE2
+
 
 #pragma once
 
@@ -57,7 +60,11 @@ namespace ImageLite
 			if (result)
 			{
 				uint32_t const err = static_cast<uint32_t>(result);
-				std::error_code const ec = ImageLite::JpegGpu::make_error_code(JpegGpu::ErrorId::error_cuda_api);
+				std::error_code const ec = ImageLite::JpegGpu::make_error_code(
+                                                ((err > 9) ?
+                                                    JpegGpu::ErrorId::error_cuda_api :
+                                                    static_cast<JpegGpu::ErrorId>(err))
+                                            );
 				std::stringstream ss;
 				ss << func << ":" << line << " code:" << err;
 				ss << " (" << NVJpegDecoder::cudaGetError(err) << ")";
@@ -69,8 +76,12 @@ namespace ImageLite
 		{
 			if (result)
 			{
-				uint32_t const err = static_cast<uint32_t>(result);
-				ec = JpegGpu::make_error_code(JpegGpu::ErrorId::error_cuda_api);
+				uint32_t err = static_cast<uint32_t>(result);
+				ec = JpegGpu::make_error_code(
+                        ((err > 9) ?
+                            JpegGpu::ErrorId::error_cuda_api :
+                            static_cast<JpegGpu::ErrorId>(err))
+                    );
 				std::stringstream ss;
 				ss << func << ":" << line << " code:" << err;
 				ss << " (" << NVJpegDecoder::cudaGetError(err) << ")";
@@ -81,4 +92,6 @@ namespace ImageLite
 #       define CudaIsErrorsEc(val) iserrorEc(error, (val), #val, __LINE__)
 	}
 }
+
+#endif // header guard 
 

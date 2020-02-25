@@ -46,46 +46,48 @@ EXPORTS
     _ZN9ImageLite14ImageRGBbufferC2Ev @45
     _ZN9ImageLite14ImageRGBbufferD1Ev @46
     _ZN9ImageLite14ImageRGBbufferD2Ev @47
-    _ZN9ImageLite5MJpeg5parseEPKciRSt6vectorIhSaIhEERi @48
-    _ZN9ImageLite5MJpeg6streamEPKcjSt8functionIFbRKSt6vectorIhSaIhEEEE @49
-    _ZN9ImageLite5MJpegC1Ev @50
-    _ZN9ImageLite5MJpegC2Ev @51
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder12cudaGetErrorEj @52
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder13imgdecompressERKSt6vectorIhSaIhEERS4_ @53
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder4initEv @54
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder5cleanEv @55
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder7imginfoERKSt6vectorIhSaIhEE @56
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder7imgreadERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIhSaIhEE @57
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder8imgallocEv @58
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder8isenableEv @59
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder9imgbufferERSt6vectorIhSaIhEE @60
-    _ZN9ImageLite7JpegGpu13NVJpegDecoder9imgstreamERKSt6vectorIhSaIhEERS4_ @61
-    _ZN9ImageLite7JpegGpu13NVJpegDecoderC1Ei @62
-    _ZN9ImageLite7JpegGpu13NVJpegDecoderC1Ev @63
-    _ZN9ImageLite7JpegGpu13NVJpegDecoderC2Ei @64
-    _ZN9ImageLite7JpegGpu13NVJpegDecoderC2Ev @65
-    _ZN9ImageLite7JpegGpu13NVJpegDecoderD1Ev @66
-    _ZN9ImageLite7JpegGpu13NVJpegDecoderD2Ev @67
-    _ZN9ImageLite8Formater11CONVERT_BMPERKSt6vectorIhSaIhEERS3_jjjjjjPv @68
-    _ZN9ImageLite8Formater13CONVERT_TO_BWERKSt6vectorIhSaIhEERS3_jjjjjjPv @69
-    _ZN9ImageLite8Formater13igetrectangleERKNS_9ImageDataERS1_RKNS_5IRECTIiEE @70
-    _ZN9ImageLite8Formater15CONVERT_TO_GREYERKSt6vectorIhSaIhEERS3_jjjjjjPv @71
-    _ZN9ImageLite8Formater16CONVERT_TO_NOPADERKSt6vectorIhSaIhEERS3_jjjjjjPv @72
-    _ZN9ImageLite8Formater16CONVERT_TO_SEPIAERKSt6vectorIhSaIhEERS3_jjjjjjPv @73
-    _ZN9ImageLite8Formater16STREAM_LUA_TABLEERKSt6vectorIhSaIhEERS3_jjjjjjPv @74
-    _ZN9ImageLite8Formater18CONVERT_FROM_NOPADERKSt6vectorIhSaIhEERS3_jjjjjjPv @75
-    _ZN9ImageLite8Formater7iresizeERKNS_9ImageDataERS1_RKNS_6IPOINTIiEE @76
-    _ZN9ImageLite8Formater7ivtableE @77 DATA
-    _ZN9ImageLite8Formater8icompareERKNS_9ImageDataERKNS_10ImageDataPERKNS_5IRECTIiEEh @78
-    _ZN9ImageLite8Formater8icompareERKNS_9ImageDataES3_RKNS_5IRECTIiEEh @79
-    _ZN9ImageLite8Formater8iconvertESt8functionIFvRKSt6vectorIhSaIhEERS4_jjjjjjPvEES6_S7_jjjjS8_ @80
-    _ZN9ImageLite8Formater9itostreamESt8functionIFvRKSt6vectorIhSaIhEERS4_jjjjjjPvEES6_jjjRSt14basic_ofstreamIcSt11char_traitsIcEE @81
-    _ZNK9ImageLite7JpegGpu8ErrorCat4nameEv @82
-    _ZNK9ImageLite7JpegGpu8ErrorCat7messageB5cxx11Ei @83
-    _ZNK9ImageLite8ErrorCat4nameEv @84
-    _ZNK9ImageLite8ErrorCat7messageB5cxx11Ei @85
-    _ZNK9ImageLite8ErrorCat7messageENS_7ErrorIdE @86
-    _ZTIN9ImageLite7JpegGpu8ErrorCatE @87 DATA
-    _ZTIN9ImageLite8ErrorCatE @88 DATA
-    _ZTVN9ImageLite7JpegGpu8ErrorCatE @89 DATA
-    _ZTVN9ImageLite8ErrorCatE @90 DATA
+    _ZN9ImageLite5MJpeg5clearEv @48
+    _ZN9ImageLite5MJpeg5parseEPKciRSt6vectorIhSaIhEERi @49
+    _ZN9ImageLite5MJpeg6streamEPKcjSt8functionIFbRKSt6vectorIhSaIhEEiiEE @50
+    _ZN9ImageLite5MJpegC1Ev @51
+    _ZN9ImageLite5MJpegC2Ev @52
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder12cudaGetErrorEj @53
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder13imgdecompressERKSt6vectorIhSaIhEERS4_ @54
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder4initEv @55
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder5cleanEv @56
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder5clearEv @57
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder7imginfoERKSt6vectorIhSaIhEE @58
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder7imgreadERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIhSaIhEE @59
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder8imgallocEv @60
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder8isenableEv @61
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder9imgbufferERSt6vectorIhSaIhEE @62
+    _ZN9ImageLite7JpegGpu13NVJpegDecoder9imgstreamERKSt6vectorIhSaIhEERS4_ @63
+    _ZN9ImageLite7JpegGpu13NVJpegDecoderC1Ei @64
+    _ZN9ImageLite7JpegGpu13NVJpegDecoderC1Ev @65
+    _ZN9ImageLite7JpegGpu13NVJpegDecoderC2Ei @66
+    _ZN9ImageLite7JpegGpu13NVJpegDecoderC2Ev @67
+    _ZN9ImageLite7JpegGpu13NVJpegDecoderD1Ev @68
+    _ZN9ImageLite7JpegGpu13NVJpegDecoderD2Ev @69
+    _ZN9ImageLite8Formater11CONVERT_BMPERKSt6vectorIhSaIhEERS3_jjjjjjPv @70
+    _ZN9ImageLite8Formater13CONVERT_TO_BWERKSt6vectorIhSaIhEERS3_jjjjjjPv @71
+    _ZN9ImageLite8Formater13igetrectangleERKNS_9ImageDataERS1_RKNS_5IRECTIiEE @72
+    _ZN9ImageLite8Formater15CONVERT_TO_GREYERKSt6vectorIhSaIhEERS3_jjjjjjPv @73
+    _ZN9ImageLite8Formater16CONVERT_TO_NOPADERKSt6vectorIhSaIhEERS3_jjjjjjPv @74
+    _ZN9ImageLite8Formater16CONVERT_TO_SEPIAERKSt6vectorIhSaIhEERS3_jjjjjjPv @75
+    _ZN9ImageLite8Formater16STREAM_LUA_TABLEERKSt6vectorIhSaIhEERS3_jjjjjjPv @76
+    _ZN9ImageLite8Formater18CONVERT_FROM_NOPADERKSt6vectorIhSaIhEERS3_jjjjjjPv @77
+    _ZN9ImageLite8Formater7iresizeERKNS_9ImageDataERS1_RKNS_6IPOINTIiEE @78
+    _ZN9ImageLite8Formater7ivtableE @79 DATA
+    _ZN9ImageLite8Formater8icompareERKNS_9ImageDataERKNS_10ImageDataPERKNS_5IRECTIiEEh @80
+    _ZN9ImageLite8Formater8icompareERKNS_9ImageDataES3_RKNS_5IRECTIiEEh @81
+    _ZN9ImageLite8Formater8iconvertESt8functionIFvRKSt6vectorIhSaIhEERS4_jjjjjjPvEES6_S7_jjjjS8_ @82
+    _ZN9ImageLite8Formater9itostreamESt8functionIFvRKSt6vectorIhSaIhEERS4_jjjjjjPvEES6_jjjRSt14basic_ofstreamIcSt11char_traitsIcEE @83
+    _ZNK9ImageLite7JpegGpu8ErrorCat4nameEv @84
+    _ZNK9ImageLite7JpegGpu8ErrorCat7messageB5cxx11Ei @85
+    _ZNK9ImageLite8ErrorCat4nameEv @86
+    _ZNK9ImageLite8ErrorCat7messageB5cxx11Ei @87
+    _ZNK9ImageLite8ErrorCat7messageENS_7ErrorIdE @88
+    _ZTIN9ImageLite7JpegGpu8ErrorCatE @89 DATA
+    _ZTIN9ImageLite8ErrorCatE @90 DATA
+    _ZTVN9ImageLite7JpegGpu8ErrorCatE @91 DATA
+    _ZTVN9ImageLite8ErrorCatE @92 DATA
