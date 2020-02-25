@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="ImageLite Test" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="MjpegTest">
+				<Option output="lib/bin/Test/ImageLite_MjpegTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="lib/obj/Test" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
+			<Target title="ContainerTest">
+				<Option output="lib/bin/Test/ImageLite_ContainerTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="lib/obj/Test" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="AllTest" targets="ContainerTest;MjpegTest;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-m64" />
+			<Add option="-std=c++17" />
+			<Add option="-fexceptions" />
+			<Add option="-O2" />
+			<Add option="-Wall" />
+			<Add option="-Wextra" />
+			<Add option="-Wno-unknown-pragmas" />
+			<Add option="-pedantic" />
+			<Add option="-D__BUILD_IMPORT_DLL=1" />
+			<Add directory="src" />
+			<Add directory="src/Helper" />
+			<Add directory="src/MJpeg" />
+			<Add directory="src/Draw" />
+		</Compiler>
+		<Linker>
+			<Add option="-s" />
+			<Add option="-lnvjpegp" />
+			<Add option="-lImageLite64" />
+			<Add directory="lib" />
+		</Linker>
+		<Unit filename="test/ImageLiteContainerTest.cpp">
+			<Option target="ContainerTest" />
+		</Unit>
+		<Unit filename="test/ImageLiteMjpegTest.cpp">
+			<Option target="MjpegTest" />
+		</Unit>
+		<Unit filename="test/ImageLiteTest.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

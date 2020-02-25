@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="ImageLite container">
+		<Project filename="ImageLite_Lib.cbp" />
+		<Project filename="ImageLite_Test.cbp" />
+	</Workspace>
+</CodeBlocks_workspace_file>
