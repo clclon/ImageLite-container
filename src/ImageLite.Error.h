@@ -1,3 +1,6 @@
+#ifndef HEADER_2167D4DF370B5194
+#define HEADER_2167D4DF370B5194
+
 
 #pragma once
 
@@ -5,11 +8,12 @@ namespace ImageLite
 {
     enum ErrorId
     {
-        error_imgl_begin = 0,
-#       define __ERRITEM(A,B) error_imgl_ ## A,
+        error_none = 0,
+        error_begin = 1600,
+#       define __ERRITEM(A,B) error_ ## A,
 #       include "ImageLite.Error.Items.h"
-        error_imgl_unknown,
-        error_imgl_end
+        error_unknown,
+        error_end
     };
     class DLL_EXPORT ErrorCat : public std::error_category
     {
@@ -32,3 +36,5 @@ namespace std
     template <>
     struct is_error_code_enum<ImageLite::ErrorId> : public true_type{};
 }
+#endif // header guard
+

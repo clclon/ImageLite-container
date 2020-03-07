@@ -29,26 +29,30 @@
     SOFTWARE.
  */
 
+#include <map>
 #include <string>
 #include <system_error>
 #include "ImageLite.h"
+#include <HelperMap.h>
 
 namespace ImageLite
 {
-    static inline const char *l_imgl_error[] =
-    {
-        "",              // ErrorId::error_begin
-#       define __ERRITEM(A,B) B,
+    Helper::CatalogMap l_imgl_error = Helper::CatalogMapInit
+        (error_begin, "")
+#       define __ERRITEM(A,B) (error_ ## A, B)
 #       include "ImageLite.Error.Items.h"
-        "unknown error", // ErrorId::error_unknown
-        ""               // ErrorId::error_end
-    };
+        (error_unknown, "error unknown")
+        (error_end, "");
     //
     std::string_view geterror(int32_t e)
     {
-        if ((e > ImageLite::ErrorId::error_imgl_begin) && (e < ImageLite::ErrorId::error_imgl_end))
-            return l_imgl_error[e];
-        return l_imgl_error[ImageLite::ErrorId::error_imgl_unknown];
+        if ((e < ImageLite::ErrorId::error_begin) || (e > ImageLite::ErrorId::error_end))
+            e = ImageLite::ErrorId::error_unknown;
+
+        auto r = l_imgl_error.find(e);
+        if (r == l_imgl_error.end())
+            return "";
+        return r->second;
     }
 
     const char* ErrorCat::name() const noexcept

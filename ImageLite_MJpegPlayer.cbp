@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="MJpeg Player" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug64">
+				<Option output="lib/bin/Debug/MJpegPlayer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="lib/obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-lImageLite64d" />
+				</Linker>
+			</Target>
+			<Target title="Release64">
+				<Option output="lib/bin/Release/MJpegPlayer" prefix_auto="1" extension_auto="1" />
+				<Option object_output="lib/obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-D_BUILD_TRACE=0" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-lImageLite64" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="upx -9 lib/bin/Release/MJpegPlayer.exe" />
+					<Add after="cmd.exe /C copy lib\bin\Release\MJpegPlayer.exe dist\MJpegPlayer.exe" />
+					<Add after="cmd.exe /C ..\..\..\__Bin64\7Zip\7z.exe a dist\MJpegPlayer.zip dist\*.dll dist\*.exe" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++17" />
+			<Add option="-m64" />
+			<Add option="-fexceptions" />
+			<Add option="-DUSE_STANDALONE_ASIO=1" />
+			<Add directory="MJpegPlayer/extern" />
+			<Add directory="MJpegPlayer/extern/GUI" />
+			<Add directory="src" />
+			<Add directory="src/MJpeg" />
+			<Add directory="src/Helper" />
+			<Add directory="../../__LIB__/SDL2/include" />
+			<Add directory="../../__LIB__/ASIO/include" />
+			<Add directory="../../__LIB__/ASIO/include/asio" />
+		</Compiler>
+		<Linker>
+			<Add option="-m64" />
+			<Add option="-Wl,--start-group" />
+			<Add option="-lmingw32" />
+			<Add option="-lSDL2main" />
+			<Add option="-lSDL2.dll" />
+			<Add option="-lnvjpegp" />
+			<Add option="-Wl,--end-group" />
+			<Add option="-lwtsapi32" />
+			<Add option="-lws2_32" />
+			<Add option="-lmswsock" />
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="kernel32" />
+			<Add library="comctl32" />
+			<Add library="comdlg32" />
+			<Add library="shlwapi" />
+			<Add directory="lib" />
+			<Add directory="../../__LIB__/SDL2/lib/64" />
+		</Linker>
+		<Unit filename="src/Helper/HelperHttp.h" />
+		<Unit filename="src/Helper/HelperMap.h" />
+		<Unit filename="src/Helper/HelperSDL2.h" />
+		<Unit filename="MJpegPlayer/App.cpp" />
+		<Unit filename="MJpegPlayer/App.h" />
+		<Unit filename="MJpegPlayer/App.menu.cpp" />
+		<Unit filename="MJpegPlayer/SDLMJpegPlayer.cpp" />
+		<Unit filename="MJpegPlayer/SDLMJpegPlayer.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="MJpegPlayer/SDLMJpegPlayer_internal.h" />
+		<Unit filename="MJpegPlayer/extern/GUI/CustomDialog.cpp" />
+		<Unit filename="MJpegPlayer/extern/GUI/CustomDialog.h" />
+		<Unit filename="MJpegPlayer/version.h" />
+		<Extensions>
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="1" use_define="1" update_manifest="0" do_auto_increment="1" ask_to_increment="0" language="C" svn="0" svn_directory="" header_path="version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+				<Code header_guard="VERSION_H" namespace="AutoVersion" prefix="MJPEG" />
+			</AutoVersioning>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

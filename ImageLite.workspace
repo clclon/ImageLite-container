@@ -3,6 +3,6 @@
 	<Workspace title="ImageLite container">
 		<Project filename="ImageLite_Lib.cbp" />
 		<Project filename="ImageLite_Test.cbp" />
-		<Project filename="MJpegPlayer/SDLMJpegPlayer.cbp" />
+		<Project filename="ImageLite_MJpegPlayer.cbp" />
 	</Workspace>
 </CodeBlocks_workspace_file>

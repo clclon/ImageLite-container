@@ -1,3 +1,6 @@
+#ifndef HEADER_35EC05D7A99E57B7
+#define HEADER_35EC05D7A99E57B7
+
 
 #pragma once
 
@@ -17,7 +20,7 @@ namespace ImageLite
             error_nvjpeg_arch_mismatch,
             error_nvjpeg_internal_error,
             error_nvjpeg_implementation_not_supported,
-            error_bad_device_number,
+            error_bad_device_number = 1800,
             error_bad_device_mode,
             error_device_not_support,
             error_unknown_chroma,
@@ -35,16 +38,14 @@ namespace ImageLite
         };
         class DLL_EXPORT ErrorCat : public std::error_category
         {
-        public:
-            //
-            const char* name() const noexcept override;
-            std::string message(int32_t ev) const override;
+            public:
+                //
+                const char* name() const noexcept override;
+                std::string message(int32_t ev) const override;
         };
         const ErrorCat errCat;
         //
         std::error_code make_error_code(ErrorId);
-        std::string geterror(int32_t);
-        const char* geterrorc(int32_t);
     }
 }
 
@@ -53,4 +54,6 @@ namespace std
     template <>
     struct is_error_code_enum<ImageLite::JpegGpu::ErrorId> : public true_type {};
 }
+
+#endif // header guard
 
